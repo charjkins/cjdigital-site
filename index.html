@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="CJ Digital: short animated launch and promo videos for businesses, websites and projects, by Charlie Jenkins in Bedford.">
+<meta name="description" content="CJ Digital: short animated launch and promo videos for businesses and websites, by Charlie Jenkins in Bedford.">
 <meta property="og:title" content="CJ Digital · Launch videos">
-<meta property="og:description" content="Short animated launch and promo videos for businesses, websites and projects.">
+<meta property="og:description" content="Short animated launch and promo videos for businesses and websites.">
 <meta property="og:image" content="https://cjdigital.uk/p/naughty-pizza.jpg">
 <meta property="og:url" content="https://cjdigital.uk/">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -147,7 +147,7 @@ dialog::backdrop{background:rgba(0,0,0,.88)}
       <div>
         <p class="kick">Launch videos</p>
         <h1>CJ Digital</h1>
-        <p>Short animated films for businesses, websites and projects, built from the real content by Charlie Jenkins.</p>
+        <p>Short animated launch and promo films for businesses and websites, built from their real content by Charlie Jenkins.</p>
       </div>
       <ul class="tally" id="tally"></ul>
     </div>
@@ -163,7 +163,7 @@ dialog::backdrop{background:rgba(0,0,0,.88)}
       <h2>About</h2>
       <div>
         <p>I studied film production and now work in IT infrastructure. CJ Digital sits between the two: videos built in code, timed and finished like an edit.</p>
-        <p>Each one starts from what's already there: the live website, the brand colours, the menu, the project paperwork. Every number, name and line on screen comes from the source, no two videos share a template, and each gets its own sound design, mastered to play properly on a phone.</p>
+        <p>Each one starts from what's already there: the live website, the brand colours, the menu, the photography. Every number, name and line on screen comes from the source, no two videos share a template, and each gets its own sound design, mastered to play properly on a phone.</p>
         <p class="cta">Launching a site, a shop or a new feature? I'll turn it into a video like these.</p>
       </div>
     </section>
@@ -184,8 +184,29 @@ dialog::backdrop{background:rgba(0,0,0,.88)}
 </dialog>
 
 <script>
-const CATS = {food:'Food & drink', sport:'Sport', services:'Shops & services', project:'Projects'};
+const CATS = {food:'Food & drink', sport:'Sport', services:'Services & tech'};
 const PROJECTS = [
+ {
+  "slug": "amalfi-cakes",
+  "title": "Amalfi Cakes",
+  "tag": "Spec promo",
+  "cat": "food",
+  "date": "18 October 2026",
+  "dur": 41,
+  "signed": true,
+  "isNew": true,
+  "sum": "A Bedford pasticceria in its own pink: wedding cakes priced by tier, celebration cakes, mignons, bespoke work and online orders.",
+  "brief": "A promo for a family pasticceria on Tavistock Street, in the shop's pink with hand-drawn doodles and photos dropped in like polaroids. It follows the website section by section: wedding cakes priced by tier, celebration cakes built to your choice of sponge and filling, trays of mignons, and bespoke cakes, then finds the shop on a sketched globe and ends on ordering online.",
+  "made": [
+   "Hand-drawn logo and doodles animated from the brand",
+   "Wedding cake tiers drawn as a priced diagram",
+   "Real cake photography as stacked polaroids",
+   "Website navigation highlights each section as it plays",
+   "Ends on the address, website and phone number"
+  ],
+  "link": "",
+  "linkText": ""
+ },
  {
   "slug": "naughty-pizza",
   "title": "Naughty Pizza",
@@ -202,27 +223,8 @@ const PROJECTS = [
    "Neon sign logo reveal and sign-off",
    "Five-step dough-to-oven sequence with the restaurant's own photography",
    "Ingredients named: Molini Pizzuti flour, San Marzano tomatoes, fior di latte",
-   "Website navigation highlights each section as it plays", "Ends on book a table, click and collect and the phone number"
-  ],
-  "link": "",
-  "linkText": ""
- },
- {
-  "slug": "no7-coffee",
-  "title": "No.7 Coffee House",
-  "tag": "Spec promo",
-  "cat": "food",
-  "date": "17 October 2026",
-  "dur": 40,
-  "signed": true,
-  "isNew": true,
-  "sum": "An independent Bedford coffee house with Cape Town roots: the café, meeting room hire, the Blues match-day hut and the coffee truck.",
-  "brief": "A promo for a Bedford coffee house, in its deep green and laid out like its own website, with the site's navigation bar following each section. A globe traces the story from Cape Town to Bedford, then the video tours the café, the meeting room upstairs, the coffee hut at Bedford Blues home games, the mobile coffee truck and the online shop.",
-  "made": [
-   "Globe journey from Cape Town to Bedford",
    "Website navigation highlights each section as it plays",
-   "Meeting room capacity, prices and packages from the site",
-   "Ends on the address, dog-friendly and free parking"
+   "Ends on book a table, click and collect and the phone number"
   ],
   "link": "",
   "linkText": ""
@@ -246,6 +248,26 @@ const PROJECTS = [
   "linkText": "",
   "cat": "food",
   "isNew": false
+ },
+ {
+  "slug": "no7-coffee",
+  "title": "No.7 Coffee House",
+  "tag": "Spec promo",
+  "cat": "food",
+  "date": "17 October 2026",
+  "dur": 40,
+  "signed": true,
+  "isNew": true,
+  "sum": "An independent Bedford coffee house with Cape Town roots: the café, meeting room hire, the Blues match-day hut and the coffee truck.",
+  "brief": "A promo for a Bedford coffee house, in its deep green and laid out like its own website, with the site's navigation bar following each section. A globe traces the story from Cape Town to Bedford, then the video tours the café, the meeting room upstairs, the coffee hut at Bedford Blues home games, the mobile coffee truck and the online shop.",
+  "made": [
+   "Globe journey from Cape Town to Bedford",
+   "Website navigation highlights each section as it plays",
+   "Meeting room capacity, prices and packages from the site",
+   "Ends on the address, dog-friendly and free parking"
+  ],
+  "link": "",
+  "linkText": ""
  },
  {
   "slug": "chartier",
@@ -393,29 +415,9 @@ const PROJECTS = [
   "isNew": false
  },
  {
-  "slug": "incident-platform",
-  "title": "Semantic Incident Intelligence Platform",
-  "tag": "Project",
-  "date": "September 2026",
-  "dur": 110,
-  "signed": false,
-  "sum": "My own AWS proof of concept: search IT incidents by meaning, spot recurring problems, and run for £0 when idle.",
-  "brief": "A pitch video for a platform I built solo on AWS. It starts with the real problem, the same fault logged differently week after week, then shows the fix: plain-English semantic search that surfaces how an issue was fixed last time, a dashboard of what breaks most often, and problem management that links twelve scattered incidents into one recurring pattern.",
-  "made": [
-   "Built on Amazon Bedrock, OpenSearch Serverless, Lambda, S3 and API Gateway",
-   "Story told from a single label-printer fault",
-   "Live product screens for search, dashboard and problem management",
-   "Serverless architecture explained in one scene"
-  ],
-  "link": "",
-  "linkText": "",
-  "cat": "project",
-  "isNew": false
- },
- {
   "slug": "connect-lex",
   "title": "Amazon Connect & Lex Dashboard",
-  "tag": "Launch",
+  "tag": "Product launch",
   "date": "September 2026",
   "dur": 89,
   "signed": false,
@@ -429,27 +431,7 @@ const PROJECTS = [
   ],
   "link": "",
   "linkText": "",
-  "cat": "project",
-  "isNew": false
- },
- {
-  "slug": "ssd-upgrade",
-  "title": "SSD upgrade project",
-  "tag": "Project",
-  "date": "28 September 2026",
-  "dur": 44,
-  "signed": false,
-  "sum": "An IT apprenticeship project explained: diagnosis from system data, the upgrade lifecycle and the evidence.",
-  "brief": "A work-based IT project for my apprenticeship: a laptop with a full disk, diagnosed from system data, upgraded and verified. The video sets out the problem, the evidence and the plan in under a minute.",
-  "made": [
-   "System data shown as live gauges: disk, RAM and CPU",
-   "Four-stage lifecycle from diagnosis to verification",
-   "Ten assessment criteria mapped on one screen",
-   "Maintenance and security checks ticked off after the upgrade"
-  ],
-  "link": "",
-  "linkText": "",
-  "cat": "project",
+  "cat": "services",
   "isNew": false
  }
 ];
@@ -462,9 +444,8 @@ const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 // hero tally
-const biz = PROJECTS.filter(p => p.cat !== 'project').length;
 document.getElementById('tally').innerHTML =
-  `<li><b>${PROJECTS.length}</b><span>Films</span></li><li><b>${biz}</b><span>Businesses &amp; sites</span></li><li><b>${PROJECTS.filter(p=>p.isNew).length}</b><span>New this month</span></li>`;
+  `<li><b>${PROJECTS.length}</b><span>Films</span></li><li><b>${Object.keys(CATS).length}</b><span>Sectors</span></li><li><b>${PROJECTS.filter(p=>p.isNew).length}</b><span>New this month</span></li>`;
 
 // filters
 const fWrap = document.getElementById('filters');
