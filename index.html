@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="CJ Digital: short animated launch and promo videos for businesses, websites and projects, by Charlie Jenkins in Bedford.">
+<meta property="og:title" content="CJ Digital · Launch videos">
+<meta property="og:description" content="Short animated launch and promo videos for businesses, websites and projects.">
+<meta property="og:image" content="https://cjdigital.uk/p/naughty-pizza.jpg">
+<meta property="og:url" content="https://cjdigital.uk/">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>CJ Digital · Launch videos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: black brand bar, striped hero band, sector filters, 4-up grid with the newest film as a double-size lead card */
+:root{
+  --nav:#000000; --band:#141414; --bg:#0a0a0a; --card:#181818; --edge:#2e2e2e;
+  --text:#ffffff; --muted:#b4b4b4; --acc:#e1251b; --accText:#ffffff;
+  --head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--band:#f1f1f1;--bg:#ffffff;--card:#ffffff;--edge:#dcdcdc;--text:#0a0a0a;--muted:#555555;--acc:#d01c12;color-scheme:light}
+}
+:root[data-theme="light"]{--band:#f1f1f1;--bg:#ffffff;--card:#ffffff;--edge:#dcdcdc;--text:#0a0a0a;--muted:#555555;--acc:#d01c12;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nav)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
+
+.top{background:var(--nav);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.top .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.badge{display:flex;flex-direction:column;align-items:center;justify-content:center;width:68px;height:52px;border-radius:9px;background:#e1251b;text-decoration:none;color:#fff;flex:none}
+.badge svg{width:22px;height:34px}
+.badge span{font:800 9px/1 var(--head);letter-spacing:.04em;margin-top:1px}
+.top nav{display:flex;gap:22px;font:500 14px/1 var(--body)}
+.top nav a{text-decoration:none;color:#cfcfcf;padding:6px 0;border-bottom:2px solid transparent}
+.top nav a:hover{color:#fff}
+.top nav a[aria-current="page"]{color:#fff;border-color:#e1251b}
+
+.band{background:var(--band);border-bottom:1px solid var(--edge);
+  background-image:repeating-linear-gradient(115deg,transparent 0 58px,color-mix(in srgb,var(--text) 4%,transparent) 58px 60px)}
+.band .wrap{padding-block:44px 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.kick{font:800 13px/1 var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin:0 0 10px}
+h1{font:800 clamp(46px,7vw,76px)/.95 var(--head);text-transform:uppercase;margin:0 0 10px;text-wrap:balance}
+.band p{margin:0;color:var(--muted);font-size:18px;max-width:58ch}
+.tally{display:flex;gap:28px;margin:0;padding:0;list-style:none}
+.tally li{display:flex;flex-direction:column}
+.tally b{font:800 44px/1 var(--head);font-variant-numeric:tabular-nums}
+.tally span{font:800 12px/1.2 var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;padding-block:26px 16px}
+.filters button{font:800 13px/1 var(--head);letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px;border:1px solid var(--edge);background:transparent;color:var(--text);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--accText)}
+.filters button small{font:inherit;opacity:.65;margin-left:6px}
+
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:56px}
+.card{background:var(--card);border:1px solid var(--edge);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;text-align:left;color:inherit;font:inherit;padding:0;cursor:pointer;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--acc)}
+.thumbbox{overflow:hidden}
+.thumb{position:relative;aspect-ratio:16/9;max-width:100%;background:#000 center/cover no-repeat;transition:transform .3s}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:var(--acc);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.play svg{width:16px;height:16px;margin-left:3px;fill:var(--accText)}
+.len{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.8);color:#fff;font:600 12px/1 var(--body);padding:5px 7px;border-radius:5px;font-variant-numeric:tabular-nums}
+.new{position:absolute;left:10px;top:10px;background:#fff;color:#000;font:800 11px/1 var(--head);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:5px}
+.body{padding:14px 14px 18px;display:flex;flex-direction:column;gap:10px;flex:1;min-width:0}
+.meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.tag{font:800 11px/1 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 55%,transparent);background:color-mix(in srgb,var(--acc) 12%,transparent);padding:5px 8px;border-radius:6px}
+.card h2{font:800 21px/1.08 var(--head);text-transform:uppercase;margin:0;text-wrap:balance}
+.card .sum{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+
+/* lead card: newest film, double size, only in the unfiltered view */
+.grid.all .card.lead{grid-column:span 2;grid-row:span 2}
+.grid.all .lead .play{width:76px;height:76px}
+.grid.all .lead .play svg{width:22px;height:22px}
+.grid.all .lead h2{font-size:clamp(28px,3.4vw,40px)}
+.grid.all .lead .sum{font-size:16px;max-width:52ch}
+.grid.all .lead .thumb{aspect-ratio:auto;flex:1;min-height:220px}
+
+.about{border-top:1px solid var(--edge);padding-block:48px 60px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px}
+.about h2{font:800 40px/1 var(--head);text-transform:uppercase;margin:0}
+.about p{margin:0 0 14px;color:var(--muted);max-width:62ch}
+.about p:first-child{color:var(--text);font-size:18px}
+.about .cta{color:var(--text);font-weight:600}
+footer{background:var(--nav);color:#b4b4b4;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:22px}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%;max-height:94vh;overflow:auto;color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.88)}
+.player{background:var(--card);border:1px solid var(--edge);border-radius:14px;overflow:hidden}
+.screen{position:relative;aspect-ratio:16/9;max-width:100%;background:#000}
+.screen video{width:100%;height:100%;display:block}
+.mark{position:absolute;right:18px;bottom:58px;width:28px;height:46px;color:#fff;opacity:.3;pointer-events:none}
+.info{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;padding:22px 24px 26px}
+.info h3{font:800 32px/1 var(--head);text-transform:uppercase;margin:6px 0 10px;text-wrap:balance}
+.info p{margin:0 0 12px;color:var(--muted)}
+.info ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--edge)}
+.info li{padding:9px 0;border-bottom:1px solid var(--edge);font-size:14px}
+.info a.visit{font-weight:600;text-underline-offset:4px}
+.lang{display:inline-flex;border:1px solid var(--edge);border-radius:999px;padding:3px;gap:3px;margin:4px 0 14px}
+.lang button{font:800 12px/1 var(--head);letter-spacing:.08em;text-transform:uppercase;border:0;border-radius:999px;padding:7px 12px;background:transparent;color:var(--text);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--acc);color:var(--accText)}
+.close{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.7);color:#fff;font:400 24px/1 var(--body);cursor:pointer}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.all .card.lead{grid-row:auto}
+  .grid.all .lead .thumb{aspect-ratio:16/9;flex:none;min-height:0}
+}
+@media (max-width:560px){
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .grid{grid-template-columns:1fr}
+  .grid.all .card.lead{grid-column:auto}
+  .top .wrap{gap:16px}
+  .about,.info{grid-template-columns:1fr;gap:18px}
+  .mark{display:none}
+}
+@media (prefers-reduced-motion:reduce){.card,.thumb{transition:none}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="jc" viewBox="126 197 731 1188"><path fill="currentColor" fill-rule="evenodd" d="M246,1375C243,1374 242,1373 242,1364C242,1357 242,1355 244,1354C245,1353 250,1352 261,1352C276,1351 278,1351 281,1349C286,1346 291,1345 301,1344C308,1343 310,1343 313,1340C315,1338 317,1337 321,1336C325,1336 327,1335 329,1333C331,1331 334,1329 337,1328C340,1327 342,1326 344,1323C346,1322 348,1320 348,1320C350,1320 375,1295 377,1291C377,1289 379,1286 381,1285C382,1284 383,1281 384,1279C385,1277 387,1274 388,1272C389,1271 391,1267 392,1264C393,1262 394,1257 396,1255C398,1252 399,1248 400,1244C401,1241 402,1235 404,1232C406,1227 408,1222 409,1215C409,1208 411,1201 413,1197C415,1190 416,1188 416,1176C417,1164 420,1138 421,1134C422,1133 422,1129 422,1124C423,1119 423,1112 424,1108C424,1098 424,1096 417,1096C415,1095 409,1093 406,1091C400,1089 397,1088 394,1088C387,1088 382,1087 379,1083C377,1081 375,1081 369,1080C363,1079 361,1079 359,1076C357,1074 355,1073 350,1072C346,1071 343,1070 340,1068C339,1066 336,1065 334,1065C333,1064 331,1064 330,1063C328,1063 326,1062 324,1060C322,1059 319,1057 317,1056C315,1055 312,1054 311,1053C310,1050 307,1049 302,1048C300,1047 298,1045 297,1044C295,1042 293,1040 292,1040C291,1040 288,1038 286,1037C284,1035 281,1032 278,1031C276,1030 274,1028 274,1028C273,1027 271,1025 270,1024C268,1023 265,1021 264,1019C263,1017 261,1016 261,1016C260,1016 258,1014 256,1012C254,1010 251,1007 250,1006C247,1003 246,1002 241,998C238,994 237,993 234,990C233,989 230,986 228,984C226,982 224,980 224,980C224,979 222,977 220,975C218,973 215,969 214,967C210,961 206,956 203,952C201,951 200,948 200,948C200,947 199,945 197,943C195,941 193,937 192,935C192,932 190,929 188,928C187,926 185,922 184,920C183,917 181,913 179,912C178,910 176,907 176,904C175,902 174,899 172,897C170,894 169,891 168,888C168,883 167,880 164,877C163,876 161,872 160,867C159,862 157,856 155,853C153,849 153,846 152,841C152,836 151,832 149,828C146,821 145,820 144,805C143,799 142,791 141,789C137,777 137,768 137,716C137,664 137,655 141,643C142,641 143,633 144,627C145,613 146,608 149,603C150,600 152,595 152,591C153,585 154,581 156,578C157,576 159,570 160,565C161,560 163,556 164,555C167,552 168,549 168,544C169,542 170,537 172,535C174,533 175,529 176,526C177,524 178,521 180,519C181,517 183,513 184,510C185,508 186,505 188,504C189,503 191,500 192,497C193,494 195,490 196,490C197,489 199,487 200,485C201,482 203,480 204,479C205,478 207,476 208,474C209,471 211,469 212,468C213,466 215,464 216,462C217,460 219,457 221,456C223,455 224,453 224,453C224,452 226,450 228,448C230,446 233,443 234,442C237,439 238,438 241,434C246,430 247,429 250,426C251,425 254,422 256,420C258,418 260,416 261,416C261,416 263,415 264,413C265,411 268,409 270,408C271,407 273,405 274,404C274,404 276,402 278,401C281,400 284,397 286,395C288,394 291,392 292,392C293,392 295,390 297,388C298,387 300,385 302,384C307,383 310,382 311,379C312,378 315,377 317,376C319,375 322,373 324,372C326,370 328,369 330,369C331,368 333,368 334,367C336,367 339,366 340,364C343,362 346,361 350,360C355,359 357,358 359,356C361,353 363,353 369,352C375,351 377,351 379,349C382,345 387,344 394,344C397,344 400,343 406,341C409,339 415,337 417,336C424,335 424,334 424,317C423,305 423,300 421,293C419,289 417,281 417,275C416,268 415,265 413,263C411,262 409,259 408,257C406,252 404,250 400,248C397,247 394,245 393,243C391,241 389,240 384,240C380,239 374,238 371,236C364,233 355,232 337,232C325,232 321,232 319,230C316,229 316,229 316,220C316,212 316,211 319,209C321,208 328,208 486,208C577,208 651,209 653,209C655,210 655,210 655,220C655,227 655,230 654,231C653,231 643,232 631,232C610,233 609,233 602,236C598,238 593,239 588,240C581,240 580,241 575,245C565,254 561,258 560,262C559,264 557,268 555,270C553,273 553,274 551,290C551,300 550,311 549,314C548,318 548,322 548,323C548,326 553,328 564,329C572,329 576,330 581,332C587,335 590,335 602,336C616,337 618,337 623,341C625,343 628,344 635,344C640,345 644,345 646,347C651,350 655,352 658,352C663,352 666,353 670,356C672,359 673,359 680,360C683,361 685,362 687,364C689,367 691,367 695,368C700,369 701,370 703,372C705,375 707,376 708,376C712,376 717,378 718,380C719,381 721,383 724,384C726,385 728,387 729,388C730,389 732,391 735,392C737,393 741,395 743,397C744,398 747,400 747,400C748,400 750,401 751,403C752,405 755,407 756,408C760,410 761,411 783,433C805,455 806,456 808,460C809,462 811,463 812,464C813,465 815,467 816,469C817,471 819,473 820,474C821,474 822,477 824,481C826,484 827,487 828,487C829,487 830,490 832,493C834,496 836,499 836,500C837,501 839,504 840,506C840,509 842,513 844,515C848,519 849,524 847,529C845,533 841,535 834,536C831,537 828,538 827,540C824,542 820,544 815,544C811,544 809,545 806,548C804,550 801,551 799,551C792,553 791,553 788,556C785,558 782,559 780,560C772,561 771,561 768,564C766,566 764,567 764,567C761,567 753,558 752,553C751,551 749,547 748,546C746,545 745,542 744,541C744,539 743,537 741,535C739,534 737,531 736,529C735,527 733,524 732,523C730,522 729,519 728,517C727,515 726,513 724,512C722,512 720,510 720,508C719,507 717,505 716,504C714,503 712,501 712,500C711,498 710,497 708,496C706,495 704,493 704,492C703,490 701,489 700,488C698,487 696,485 695,484C695,482 693,481 692,480C691,480 688,478 685,476C683,474 680,472 679,472C679,472 676,470 674,468C672,466 669,464 668,464C667,464 664,462 662,461C660,459 656,457 654,456C652,455 649,454 647,452C645,450 643,449 640,449C636,448 630,445 630,444C630,443 626,441 620,440C616,439 612,438 609,436C606,433 604,433 595,432C586,431 583,430 578,428C573,425 571,425 563,424C556,424 554,424 551,425C549,426 548,428 548,428C548,429 548,535 548,665C548,834 548,901 547,904C545,909 543,1002 545,1006L546,1008L559,1008C572,1007 573,1007 578,1004C583,1002 586,1001 595,1000C604,999 606,999 609,996C612,994 616,993 620,992C628,991 630,990 631,987C632,986 634,985 637,984C644,983 645,983 648,980C650,977 653,976 656,976C659,975 661,974 663,972C664,970 667,968 669,968C671,967 673,965 674,964C674,964 677,962 680,960C683,958 686,956 687,955C687,955 689,953 691,952C693,951 695,949 695,948C696,947 698,945 700,944C702,943 704,941 705,940C705,939 707,937 708,936C710,935 712,933 713,931C714,929 716,928 716,928C717,928 719,927 719,925C720,923 722,921 724,920C725,919 727,917 728,915C729,913 731,911 732,910C733,908 735,905 737,903C738,900 740,898 740,898C741,897 743,895 744,892C746,889 747,886 748,886C749,885 751,883 752,880C753,876 755,873 758,870C760,868 763,866 764,866C765,866 766,867 768,869C770,871 772,872 775,872C780,872 784,873 787,876C788,878 791,879 794,880C801,881 804,882 807,884C809,887 810,888 818,888C821,889 823,890 825,891C828,894 832,896 836,896C847,896 852,909 844,917C842,919 840,923 840,926C839,928 837,931 836,932C836,933 834,936 832,939C830,942 829,945 828,945C827,945 826,948 824,951C822,955 821,958 820,958C819,959 817,961 816,963C815,965 813,967 812,968C811,969 809,970 808,972C807,974 805,977 804,978C802,980 796,987 791,993C785,999 777,1007 773,1011C769,1014 764,1018 763,1020C761,1021 758,1023 757,1024C755,1025 753,1027 752,1029C750,1030 748,1032 747,1032C745,1033 743,1034 743,1036C742,1037 739,1039 736,1040C734,1041 730,1043 729,1045C727,1047 725,1048 724,1048C723,1048 720,1050 718,1051C716,1054 714,1055 711,1056C708,1056 706,1057 703,1060C701,1062 699,1063 696,1064C692,1064 690,1066 688,1068C685,1070 683,1071 679,1072C675,1072 672,1073 670,1076C666,1079 665,1079 656,1081C654,1081 650,1083 648,1084C644,1087 642,1087 635,1088C628,1088 625,1089 623,1091C618,1095 616,1095 603,1096C593,1097 589,1097 583,1100C575,1103 565,1104 550,1104C543,1104 539,1104 538,1105C536,1106 536,1109 535,1117C534,1123 533,1130 531,1134C530,1138 529,1144 528,1150C527,1162 527,1163 523,1170C522,1172 520,1178 520,1183C519,1188 517,1193 516,1195C514,1197 512,1201 512,1204C511,1207 510,1210 509,1212C505,1218 504,1219 504,1223C503,1226 502,1229 500,1231C498,1232 496,1236 496,1238C495,1241 493,1245 492,1246C490,1247 489,1250 488,1252C487,1253 486,1256 485,1257C483,1258 481,1260 480,1263C479,1265 477,1267 476,1268C475,1270 473,1272 472,1274C471,1276 469,1278 468,1279C466,1280 464,1282 464,1284C463,1285 462,1287 460,1288C458,1289 457,1290 457,1290C457,1291 444,1304 443,1304C442,1304 441,1306 440,1307C439,1309 437,1311 436,1312C434,1312 432,1314 431,1316C430,1317 428,1319 427,1320C425,1321 422,1322 421,1324C420,1325 417,1327 414,1328C412,1328 409,1331 408,1332C406,1334 404,1336 402,1336C401,1337 398,1338 396,1340C394,1342 392,1343 390,1344C386,1344 382,1346 382,1347C382,1349 377,1351 371,1352C367,1353 364,1354 362,1356C360,1358 359,1359 359,1359C359,1359 355,1359 351,1360C345,1361 342,1361 339,1364C334,1367 333,1367 323,1368C316,1369 311,1369 308,1371C299,1375 289,1376 268,1376C257,1376 248,1376 246,1375Z M423,994C424,991 425,443 423,439C422,435 419,434 417,437C415,439 412,439 408,440C402,440 401,441 398,444C395,446 392,447 389,448C386,449 382,450 381,451C379,454 375,456 372,456C371,456 368,458 367,459C365,461 361,463 359,464C355,465 354,466 353,468C352,470 350,471 348,472C346,473 343,474 343,476C342,477 340,479 338,480C331,483 309,505 300,515C298,519 294,524 292,526C290,529 288,531 288,532C288,532 286,535 285,537C283,539 281,542 280,544C279,546 277,549 276,551C274,552 272,555 272,558C271,560 269,564 267,566C265,569 264,571 263,575C263,579 262,581 260,583C258,586 257,589 256,594C255,599 253,603 252,605C250,607 249,610 249,611C247,625 246,630 243,636C241,642 240,644 240,656C239,664 238,672 238,675C237,678 237,687 236,695C236,703 235,711 234,713C233,715 233,717 235,721C235,723 236,729 236,734C236,738 237,747 237,752C238,758 239,769 240,776C241,787 241,791 243,796C246,803 247,805 248,815C249,821 249,824 251,826C253,829 255,833 256,838C257,843 258,846 260,849C262,851 263,853 263,857C264,861 265,863 267,866C269,868 271,872 272,874C272,877 274,880 276,881C277,883 279,886 280,888C281,890 283,893 285,895C286,897 288,900 288,900C288,901 289,903 291,904C293,905 295,908 296,910C300,918 318,937 332,948C336,950 340,954 342,956C343,957 346,960 348,960C350,961 352,963 353,964C354,966 357,967 359,968C361,969 365,971 366,973C368,974 371,976 372,976C375,976 379,978 381,981C382,982 386,983 389,984C392,985 395,986 398,988C401,991 402,992 408,992C412,993 415,993 416,995C419,998 421,997 423,994Z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="badge" href="#top" aria-label="CJ Digital, home"><svg aria-hidden="true"><use href="#jc"/></svg><span>CJ DIGITAL</span></a>
+    <nav aria-label="Main">
+      <a href="#work" aria-current="page">Work</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="band">
+    <div class="wrap">
+      <div>
+        <p class="kick">Launch videos</p>
+        <h1>CJ Digital</h1>
+        <p>Short animated films for businesses, websites and projects, built from the real content by Charlie Jenkins.</p>
+      </div>
+      <ul class="tally" id="tally"></ul>
+    </div>
+  </section>
+
+  <div class="wrap" id="work">
+    <div class="filters" role="group" aria-label="Filter videos" id="filters"></div>
+    <div class="grid all" id="grid"></div>
+  </div>
+
+  <div class="wrap">
+    <section class="about" id="about">
+      <h2>About</h2>
+      <div>
+        <p>I studied film production and now work in IT infrastructure. CJ Digital sits between the two: videos built in code, timed and finished like an edit.</p>
+        <p>Each one starts from what's already there: the live website, the brand colours, the menu, the project paperwork. Every number, name and line on screen comes from the source, no two videos share a template, and each gets its own sound design, mastered to play properly on a phone.</p>
+        <p class="cta">Launching a site, a shop or a new feature? I'll turn it into a video like these.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 CJ Digital</span><span>Videos shown at web quality</span></div></footer>
+
+<dialog id="dlg" aria-label="Video player">
+  <div class="player">
+    <div class="screen">
+      <button class="close" id="close" type="button" aria-label="Close player">×</button>
+      <video id="v" controls playsinline preload="none"></video>
+      <svg class="mark" aria-hidden="true"><use href="#jc"/></svg>
+    </div>
+    <div class="info" id="info"></div>
+  </div>
+</dialog>
+
+<script>
+const CATS = {food:'Food & drink', sport:'Sport', services:'Shops & services', project:'Projects'};
+const PROJECTS = [
+ {
+  "slug": "naughty-pizza",
+  "title": "Naughty Pizza",
+  "tag": "Spec promo",
+  "cat": "food",
+  "date": "17 October 2026",
+  "dur": 37,
+  "signed": true,
+  "isNew": true,
+  "sum": "A Neapolitan pizzeria on Bedford's Riverside Square: 1,586 km from Naples, dough to oven in five steps, then book or click and collect.",
+  "brief": "A promo for a family-run pizzeria, in its midnight blue and neon. It opens on a spinning globe and flies the 1,586 kilometres from Naples to Bedford, walks through a pizza from dough to oven, names the Italian ingredients and shows the riverside terrace, with the site's navigation tracking each section. It ends on booking a table or click and collect.",
+  "made": [
+   "Globe flight from Naples to Bedford, distance counted in",
+   "Neon sign logo reveal and sign-off",
+   "Five-step dough-to-oven sequence with the restaurant's own photography",
+   "Ingredients named: Molini Pizzuti flour, San Marzano tomatoes, fior di latte",
+   "Website navigation highlights each section as it plays", "Ends on book a table, click and collect and the phone number"
+  ],
+  "link": "",
+  "linkText": ""
+ },
+ {
+  "slug": "no7-coffee",
+  "title": "No.7 Coffee House",
+  "tag": "Spec promo",
+  "cat": "food",
+  "date": "17 October 2026",
+  "dur": 40,
+  "signed": true,
+  "isNew": true,
+  "sum": "An independent Bedford coffee house with Cape Town roots: the café, meeting room hire, the Blues match-day hut and the coffee truck.",
+  "brief": "A promo for a Bedford coffee house, in its deep green and laid out like its own website, with the site's navigation bar following each section. A globe traces the story from Cape Town to Bedford, then the video tours the café, the meeting room upstairs, the coffee hut at Bedford Blues home games, the mobile coffee truck and the online shop.",
+  "made": [
+   "Globe journey from Cape Town to Bedford",
+   "Website navigation highlights each section as it plays",
+   "Meeting room capacity, prices and packages from the site",
+   "Ends on the address, dog-friendly and free parking"
+  ],
+  "link": "",
+  "linkText": ""
+ },
+ {
+  "slug": "cat-cafe",
+  "title": "Bedford Cat Café",
+  "tag": "Spec promo",
+  "date": "October 2026",
+  "dur": 45,
+  "signed": true,
+  "sum": "A café with nine resident cats on Bedford High Street: opening hours, ways to visit, the cats and what's on.",
+  "brief": "A promo for an independent cat café, built from its own website in the café's green and cream. It covers when to come, the four ways to visit, the nine cats who live there, the events calendar, and the café's welfare-first approach.",
+  "made": [
+   "Brand palette and type taken from the café's site",
+   "A walking cat as the running motif",
+   "The resident cats introduced one by one",
+   "Welfare message given its own closing scene"
+  ],
+  "link": "",
+  "linkText": "",
+  "cat": "food",
+  "isNew": false
+ },
+ {
+  "slug": "chartier",
+  "title": "Bouillon Chartier",
+  "tag": "Spec promo",
+  "cat": "food",
+  "date": "10 October 2026",
+  "dur": 55,
+  "signed": true,
+  "isNew": true,
+  "langs": {
+   "en": "chartier-en",
+   "fr": "chartier-fr"
+  },
+  "sum": "The Paris bouillon founded in 1896, in its own red and cream: the history, the Belle Époque room, the menu and three restaurants. English and French.",
+  "brief": "A story-led promo for the Paris brasserie group, made in two languages. It starts at the Les Halles market in 1896, sets out the founders' promise of a proper meal for a modest sum, then shows the Art Nouveau dining room, the seasonal menu, the opening hours and the three Paris addresses.",
+  "made": [
+   "Full English and French versions on identical timing",
+   "Belle Époque type and borders taken from the brand",
+   "Menu dishes scrolled like a bill of fare",
+   "Three restaurants with their Métro stops"
+  ],
+  "link": "",
+  "linkText": ""
+ },
+ {
+  "slug": "toa-sports",
+  "title": "TOA Sports",
+  "tag": "Spec promo",
+  "cat": "sport",
+  "date": "17 October 2026",
+  "dur": 47,
+  "signed": true,
+  "isNew": true,
+  "sum": "Bespoke teamwear for clubs and schools: kit sport by sport, the made-to-order range, delivery times and no minimum order.",
+  "brief": "A promo for a bespoke sportswear company, in black, white and red. It opens on a rugby huddle and the line 'your sport, your club, your colours', runs through the sports TOA kits out, shows the men's, women's and youth range, then sets out the practical case for clubs: delivery times, in-house design and no minimum order quantities.",
+  "made": [
+   "Sport-by-sport sequence with real custom kit",
+   "Delivery, design and order terms as a four-card grid",
+   "Badges of the clubs and schools it already kits out",
+   "Ends on asking for samples and a price list"
+  ],
+  "link": "",
+  "linkText": ""
+ },
+ {
+  "slug": "no-limitz",
+  "title": "No Limitz",
+  "tag": "Spec promo",
+  "cat": "sport",
+  "date": "10 October 2026",
+  "dur": 50,
+  "signed": true,
+  "isNew": true,
+  "sum": "Bedford's independent sports shop: the brands, schoolwear for local schools, clubwear, printing and embroidery, and opening hours.",
+  "brief": "A promo for an independent sports retailer, in electric blue. It covers why to shop local, with click and collect, expert advice and a 4.8 Google rating, then every sport stocked, the brands on the shelves, schoolwear for local schools, clubwear, and printing, embroidery and engraving. It ends on the Shuttleworth Road shop and its hours.",
+  "made": [
+   "Brand logos on a moving rail",
+   "Schoolwear list built from the shop's own schools",
+   "Customisation services with live embroidery footage",
+   "Opening hours laid out day by day"
+  ],
+  "link": "",
+  "linkText": ""
+ },
+ {
+  "slug": "cheese-company",
+  "title": "Bedford Cheese Company",
+  "tag": "Spec promo",
+  "date": "October 2026",
+  "dur": 50,
+  "signed": true,
+  "sum": "A cheese shop, café and deli in Cardington: opening hours, visit-shop-gift-cater, nine kinds of cheese and reviews.",
+  "brief": "A promo for a family-run cheese shop, café and deli, in the shop's cream and navy. It walks through opening hours, the four ways to use the shop, a counter of nine cheese styles and gifts, and what customers say.",
+  "made": [
+   "Opening hours as an animated week",
+   "Visit, shop, gift and cater as a four-step path",
+   "Nine product cards with real photography",
+   "Customer reviews quoted from the shop's own listings"
+  ],
+  "link": "",
+  "linkText": "",
+  "cat": "food",
+  "isNew": false
+ },
+ {
+  "slug": "lzh-cleaning",
+  "title": "LZH Cleaning Group",
+  "tag": "Spec promo",
+  "date": "October 2026",
+  "dur": 30,
+  "signed": true,
+  "sum": "Commercial cleaners in Bedford: the eight kinds of space they clean, ending on a quote call to action.",
+  "brief": "A 30-second promo for a commercial cleaning company. It opens on the team, shows the eight kinds of space they clean, from offices and warehouses to schools and healthcare, and ends on the phone number and a request-a-quote button.",
+  "made": [
+   "Bright brand blues and sparkle motif from the company logo",
+   "Eight service tiles with photography",
+   "Short enough for a social feed",
+   "Ends on contact details and a clear next step"
+  ],
+  "link": "",
+  "linkText": "",
+  "cat": "services",
+  "isNew": false
+ },
+ {
+  "slug": "brook-harris",
+  "title": "Brook Harris Bespoke Tailoring",
+  "tag": "Website",
+  "date": "28 September 2026",
+  "dur": 44,
+  "signed": false,
+  "sum": "A bespoke tailor's site in navy, cream and brass: the visiting service, collections, process and reviews.",
+  "brief": "A tour of a tailor's website: the visiting tailoring service, the collections, how a commission works and what clients say. Navy, cream and brass to match the cloth, with stitch lines and a tape measure as the motion motifs.",
+  "made": [
+   "Serif typography and a palette taken from suiting",
+   "Stats and collections pulled from the live site",
+   "Four-step process from consultation to fitting",
+   "Client reviews quoted from the site"
+  ],
+  "link": "https://www.brookharris.co.uk/",
+  "linkText": "brookharris.co.uk",
+  "cat": "services",
+  "isNew": false
+ },
+ {
+  "slug": "bedfordshire-squash",
+  "title": "Bedfordshire Squash & Racketball",
+  "tag": "Website launch",
+  "date": "4 October 2026",
+  "dur": 52,
+  "signed": false,
+  "sum": "New site, new BSR brand, new features: a tour with a ball that lands in the logo and a recreated minigame rally.",
+  "brief": "The county association launched a new website, rebranded it as BSR, then kept adding features. The video walks through all of it in the site's own colours and type, from the ball that lands in the new logo to a recreated rally from the site's arcade minigame.",
+  "made": [
+   "Ball-into-logo opening built around the new BSR badge",
+   "League numbers counted up from the homepage",
+   "Players, teams and clubs shown with the site's real league data",
+   "Junior sign-up and the minigame, each with its own scene",
+   "Full sound design, mastered for phones"
+  ],
+  "link": "https://bedfordshiresquash.co.uk/",
+  "linkText": "bedfordshiresquash.co.uk",
+  "cat": "sport",
+  "isNew": false
+ },
+ {
+  "slug": "incident-platform",
+  "title": "Semantic Incident Intelligence Platform",
+  "tag": "Project",
+  "date": "September 2026",
+  "dur": 110,
+  "signed": false,
+  "sum": "My own AWS proof of concept: search IT incidents by meaning, spot recurring problems, and run for £0 when idle.",
+  "brief": "A pitch video for a platform I built solo on AWS. It starts with the real problem, the same fault logged differently week after week, then shows the fix: plain-English semantic search that surfaces how an issue was fixed last time, a dashboard of what breaks most often, and problem management that links twelve scattered incidents into one recurring pattern.",
+  "made": [
+   "Built on Amazon Bedrock, OpenSearch Serverless, Lambda, S3 and API Gateway",
+   "Story told from a single label-printer fault",
+   "Live product screens for search, dashboard and problem management",
+   "Serverless architecture explained in one scene"
+  ],
+  "link": "",
+  "linkText": "",
+  "cat": "project",
+  "isNew": false
+ },
+ {
+  "slug": "connect-lex",
+  "title": "Amazon Connect & Lex Dashboard",
+  "tag": "Launch",
+  "date": "September 2026",
+  "dur": 89,
+  "signed": false,
+  "sum": "A launch for a contact-centre dashboard: one view of service levels, agents, bot containment and AI agent metrics.",
+  "brief": "A launch video for a contact-centre analytics dashboard built on Amazon Connect and Lex. It opens on the problem, data spread across five different places, then tours the dashboard role by role: the manager's overview, containment failures traced through the contact flow, live agent status, personal scorecards and metrics for agentic self-service.",
+  "made": [
+   "Role-by-role tour from manager to agent",
+   "Sankey contact-flow view showing where bots lose callers",
+   "Real dashboard screens, not mock-ups",
+   "Purple-and-teal palette matching the product"
+  ],
+  "link": "",
+  "linkText": "",
+  "cat": "project",
+  "isNew": false
+ },
+ {
+  "slug": "ssd-upgrade",
+  "title": "SSD upgrade project",
+  "tag": "Project",
+  "date": "28 September 2026",
+  "dur": 44,
+  "signed": false,
+  "sum": "An IT apprenticeship project explained: diagnosis from system data, the upgrade lifecycle and the evidence.",
+  "brief": "A work-based IT project for my apprenticeship: a laptop with a full disk, diagnosed from system data, upgraded and verified. The video sets out the problem, the evidence and the plan in under a minute.",
+  "made": [
+   "System data shown as live gauges: disk, RAM and CPU",
+   "Four-stage lifecycle from diagnosis to verification",
+   "Ten assessment criteria mapped on one screen",
+   "Maintenance and security checks ticked off after the upgrade"
+  ],
+  "link": "",
+  "linkText": "",
+  "cat": "project",
+  "isNew": false
+ }
+];
+
+const grid = document.getElementById('grid');
+const dlg = document.getElementById('dlg');
+const v = document.getElementById('v');
+const info = document.getElementById('info');
+const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// hero tally
+const biz = PROJECTS.filter(p => p.cat !== 'project').length;
+document.getElementById('tally').innerHTML =
+  `<li><b>${PROJECTS.length}</b><span>Films</span></li><li><b>${biz}</b><span>Businesses &amp; sites</span></li><li><b>${PROJECTS.filter(p=>p.isNew).length}</b><span>New this month</span></li>`;
+
+// filters
+const fWrap = document.getElementById('filters');
+const fBtns = [['all','All',PROJECTS.length], ...Object.entries(CATS).map(([k,l]) => [k,l,PROJECTS.filter(p=>p.cat===k).length])];
+fWrap.innerHTML = fBtns.map(([k,l,n],i) => `<button type="button" data-f="${k}" aria-pressed="${i===0}">${l}<small>${n}</small></button>`).join('');
+
+PROJECTS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'card' + (i === 0 ? ' lead' : ''); b.type = 'button'; b.dataset.cat = p.cat;
+  b.setAttribute('aria-label', `Play ${p.title}`);
+  b.innerHTML = `
+    <div class="thumbbox thumb" style="background-image:url('p/${p.langs ? p.langs.en : p.slug}.jpg')">
+      ${p.isNew ? '<span class="new">New</span>' : ''}
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+      <span class="len">${fmt(p.dur)}</span>
+    </div>
+    <div class="body">
+      <div class="meta"><span class="tag">${esc(p.tag)}</span><span>${esc(p.date)}</span>${p.langs ? '<span>EN · FR</span>' : ''}</div>
+      <h2>${esc(p.title)}</h2>
+      <p class="sum">${esc(p.sum)}</p>
+    </div>`;
+  b.addEventListener('click', () => open(p));
+  grid.appendChild(b);
+});
+
+function setSrc(p, lang, keepTime) {
+  const t = keepTime ? v.currentTime : 0;
+  const file = p.langs ? p.langs[lang] : p.slug;
+  v.src = `v/${file}.mp4`; v.poster = `p/${file}.jpg`;
+  if (t) v.addEventListener('loadedmetadata', () => { v.currentTime = t; }, {once:true});
+  v.play().catch(() => {});
+}
+function open(p) {
+  info.innerHTML = `
+    <div>
+      <div class="meta"><span class="tag">${esc(p.tag)}</span><span>${esc(p.date)}</span><span>${fmt(p.dur)}</span><span>${esc(CATS[p.cat])}</span></div>
+      <h3>${esc(p.title)}</h3>
+      ${p.langs ? `<div class="lang" role="group" aria-label="Language">${Object.keys(p.langs).map((k,i)=>`<button type="button" data-l="${k}" aria-pressed="${i===0}">${k==='en'?'English':'Français'}</button>`).join('')}</div>` : ''}
+      <p>${esc(p.brief)}</p>
+      ${p.link ? `<a class="visit" href="${p.link}" target="_blank" rel="noopener">Visit ${esc(p.linkText)}</a>` : ''}
+    </div>
+    <ul>${p.made.map(m => `<li>${esc(m)}</li>`).join('')}</ul>`;
+  info.querySelectorAll('.lang button').forEach(btn => btn.addEventListener('click', () => {
+    info.querySelectorAll('.lang button').forEach(o => o.setAttribute('aria-pressed', String(o === btn)));
+    setSrc(p, btn.dataset.l, true);
+  }));
+  document.querySelector('.mark').style.display = p.signed ? 'none' : '';
+  dlg.showModal();
+  setSrc(p, 'en', false);
+}
+function shut() { v.pause(); dlg.close(); }
+document.getElementById('close').addEventListener('click', shut);
+dlg.addEventListener('click', e => { if (e.target === dlg) shut(); });
+dlg.addEventListener('close', () => { v.pause(); v.removeAttribute('src'); v.load(); });
+
+fWrap.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+  fWrap.querySelectorAll('button').forEach(o => o.setAttribute('aria-pressed', String(o === btn)));
+  const f = btn.dataset.f;
+  grid.classList.toggle('all', f === 'all');
+  grid.querySelectorAll('.card').forEach(c => { c.hidden = !(f === 'all' || c.dataset.cat === f); });
+}));
+</script>
+
+</body>
+</html>
