@@ -464,7 +464,10 @@ const local=BIZ.filter(b=>!b.far), far=BIZ.find(b=>b.far);
 // fan labels out around Bedford, ordered by bearing so leader lines don't cross
 // left column = westernmost half, right column = easternmost half; each sorted north to south
 const fanOrder=(()=>{ const byLon=[...local].sort((a,c)=>a.lon-c.lon), h=Math.ceil(byLon.length/2);
-  const ns=(a,c)=>c.lat-a.lat; return [...byLon.slice(0,h).sort(ns),...byLon.slice(h).sort(ns)].map(b=>({b})); })();
+  const ns=(a,c)=>c.lat-a.lat, o=[...byLon.slice(0,h).sort(ns),...byLon.slice(h).sort(ns)];
+  // hand-picked swaps in the map columns (Charlie: Moonface at the top, not Brook Harris)
+  [['brook-harris','moonface-records']].forEach(([p,q])=>{ const i=o.findIndex(x=>x.poster===p), j=o.findIndex(x=>x.poster===q); if(i>=0&&j>=0) [o[i],o[j]]=[o[j],o[i]]; });
+  return o.map(b=>({b})); })();
 function drawBiz(now){
   const z=view.zoom, close=z>8 && mode==='bedford' && !fly;
   // Paris → Bedford arc in the world view
