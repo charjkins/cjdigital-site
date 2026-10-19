@@ -427,8 +427,8 @@ const P={x:0,y:0,z:0};
 function projLL(lat,lon,out){return proj(Math.sin(lat*rad),Math.cos(lat*rad),lon*rad,out);}
 
 // ---- timeline (ms)
-const T={dust:1300, form:1700, hold:1300, burst:900, bind:1800, dive:2400, sea:2000};
-const tForm=T.dust, tHold=tForm+T.form, tBurst=tHold+T.hold, tBind=tBurst+T.burst, tDive=tBind+T.bind, tSea=tDive+T.dive, tDone=tSea+T.sea;
+const T={dust:1300, form:1700, hold:1300, burst:900, bind:1800, dive:2400, sea:3000};
+const tForm=T.dust, tHold=tForm+T.form, tBurst=tHold+T.hold, tBind=tBurst+T.burst, tDive=tBind+T.bind, tSea=tDive+900, tDone=tSea+T.sea;   // the swarm leaves the globe while it is still diving
 function phaseName(t){return t<tForm?['01','Particles']:t<tBurst?['01','CJ Digital']:t<tDive?['02','World']:t<tSea?['03','Into the Atlantic']:t<tDone?['04','Into the water']:null}
 // the CJ binds onto a globe that turns to the North Atlantic and dives in, then every dot swims to its place in the sea
 const LON0=70*rad, LON1=-38*rad, LAT0=12*rad, LAT1=27*rad, ZOOM1=2.3;
@@ -459,8 +459,8 @@ function drawIntro(t){
   wm.style.opacity = t>tForm+T.form*.6 && t<tBurst+150 ? 1 : 0;
   ctx.globalCompositeOperation='source-over';
   if(t>=tBurst) setDiveView(t);
-  if(t>=tBind&&t<tSea+T.sea*.6){ // the sea itself: the globe's disc, growing until it fills the screen
-    const k=R*view.zoom, fade=t<tSea?clamp((t-tBind)/600,0,1):1-clamp((t-tSea)/(T.sea*.6),0,1);
+  if(t>=tBind&&t<tSea+1600){ // the sea itself: the globe's disc, growing until it fills the screen
+    const k=R*view.zoom, fade=t<tSea?clamp((t-tBind)/600,0,1):1-clamp((t-tSea)/1600,0,1);
     const g=ctx.createRadialGradient(W/2-k*.25,H/2-k*.3,k*.05,W/2,H/2,k);
     g.addColorStop(0,'rgba(120,190,255,.35)'); g.addColorStop(1,'rgba(40,110,210,.45)');
     ctx.globalAlpha=fade; ctx.fillStyle=g; ctx.beginPath(); ctx.arc(W/2,H/2,k,0,TAU); ctx.fill();
@@ -477,18 +477,23 @@ function drawIntro(t){
     else if(t<tBind){ // dissolve: blown outward with a little swirl
       const e=easeOut(clamp((t-tBurst)/T.burst,0,1)), ang=Math.atan2(ly[i]-H/2,lx[i]-W/2)+seed[i]*.15, d=e*(60+delay[i]*W*.28);
       x=lx[i]+Math.cos(ang)*d; y=ly[i]+Math.sin(ang)*d; sx[i]=x; sy[i]=y; a=.85-.45*e; }
-    else if(t<tSea){ // bind onto the globe, then ride it down into the Atlantic
-      proj(world.sl[i],world.cl[i],world.lon[i],P);
-      const e=ease(clamp((t-tBind-delay[i]*600)/(T.bind-600),0,1));
-      x=sx[i]+(P.x-sx[i])*e; y=sy[i]+(P.y-sy[i])*e;
-      a=(.4+.6*e)*(P.z>0?1:1-e); s=1.4+e*.4*Math.min(view.zoom,3);
-      if(P.z>0&&x>-10&&x<W+10&&y>-10&&y<H+10){ qx[i]=x; qy[i]=y; tx[i]=1; } else { qx[i]=W/2+(x-W/2)*.35; qy[i]=H/2+(y-H/2)*.35; tx[i]=0; }
-      if(a<=0.01) continue; }
-    else { // every dot swims from the globe to its place in the sea
-      rest(i,P);
-      const e=ease(clamp((t-tSea-delay[i]*350)/(T.sea-350),0,1));
-      x=qx[i]+(P.x-qx[i])*e; y=qy[i]+(P.y-camY-qy[i])*e;
-      a=tx[i]?1:Math.min(1,e*3); s=1.6+e*.5; if(a<=0.01) continue; }
+    else { // bind onto the globe and ride it down into the Atlantic, then peel off and swarm into the sea
+      proj(world.sl[i],world.cl[i],world.lon[i],P); const gz=P.z;
+      const e1=ease(clamp((t-tBind-delay[i]*600)/(T.bind-600),0,1));
+      let bx=sx[i]+(P.x-sx[i])*e1, by=sy[i]+(P.y-sy[i])*e1;
+      const e2=clamp((t-tSea-delay[i]*1100)/(T.sea-1100),0,1);
+      if(e2<=0){ x=bx; y=by; a=(.4+.6*e1)*(gz>0?1:1-e1); s=1.4+e1*.4*Math.min(view.zoom,3); if(a<=0.01) continue; }
+      else {
+        if(gz<=0){ bx=W/2+(bx-W/2)*.35; by=H/2+(by-H/2)*.35; }        // dots from the far side surface near the middle
+        rest(i,P); const e=ease(e2), arc=Math.sin(Math.PI*e);
+        let px_=bx+(P.x-bx)*e, py_=by+(P.y-camY-by)*e;
+        // one shared swirl around a drifting centre, so they move together like a shoal
+        const cx=W*(.5+.15*Math.sin(t*.0009)), cy=H*(.55+.1*Math.cos(t*.0011)), th=arc*(1.25+delay[i]*.35);
+        const rx=px_-cx, ry=py_-cy, c=Math.cos(th), sn=Math.sin(th);
+        px_=cx+rx*c-ry*sn; py_=cy+rx*sn+ry*c;
+        px_+=Math.sin(py_*.012+t*.004+seed[i])*20*arc; py_+=Math.cos(px_*.011+t*.0035+seed[i]*1.3)*20*arc;
+        x=px_; y=py_; a=gz>0?1:Math.min(1,e2*4); s=1.6+e*.5; }
+    }
     s*=1.45; ctx.globalAlpha=clamp(a*1.15,0,1); ctx.fillStyle=pcol[i]; ctx.fillRect(x-s/2,y-s/2,s,s);
   }
   ctx.globalCompositeOperation='source-over'; ctx.globalAlpha=1;
