@@ -427,9 +427,15 @@ const P={x:0,y:0,z:0};
 function projLL(lat,lon,out){return proj(Math.sin(lat*rad),Math.cos(lat*rad),lon*rad,out);}
 
 // ---- timeline (ms)
-const T={dust:1300, form:1700, hold:1300, burst:900, bind:2000};
-const tForm=T.dust, tHold=tForm+T.form, tBurst=tHold+T.hold, tBind=tBurst+T.burst, tDone=tBind+T.bind;
-function phaseName(t){return t<tForm?['01','Particles']:t<tBurst?['01','CJ Digital']:t<tDone?['02','Into the water']:null}
+const T={dust:1300, form:1700, hold:1300, burst:900, bind:1800, dive:2400, sea:2000};
+const tForm=T.dust, tHold=tForm+T.form, tBurst=tHold+T.hold, tBind=tBurst+T.burst, tDive=tBind+T.bind, tSea=tDive+T.dive, tDone=tSea+T.sea;
+function phaseName(t){return t<tForm?['01','Particles']:t<tBurst?['01','CJ Digital']:t<tDive?['02','World']:t<tSea?['03','Into the Atlantic']:t<tDone?['04','Into the water']:null}
+// the CJ binds onto a globe that turns to the North Atlantic and dives in, then every dot swims to its place in the sea
+const LON0=70*rad, LON1=-38*rad, LAT0=12*rad, LAT1=27*rad, ZOOM1=2.3;
+function setDiveView(t){
+  const a=ease(clamp((t-tBind)/(T.bind+T.dive),0,1)), z=ease(clamp((t-tDive)/T.dive,0,1));
+  view.lon=LON0+(LON1-LON0)*a; view.lat=LAT0+(LAT1-LAT0)*a; view.zoom=Math.exp(Math.log(ZOOM1)*z*z);
+}
 
 function frame(now){
   const dt=Math.min(50,now-last); last=now;
@@ -448,12 +454,19 @@ function frame(now){
 
 function drawIntro(t){
   const ph=phaseName(t);
-  if(!ph){mode='globe';t0=performance.now();setReadout('02','Personal projects');return;}
+  if(!ph){mode='globe';t0=performance.now();view.zoom=1;setReadout('02','Personal projects');return;}
   setReadout(ph[0],ph[1]);
   wm.style.opacity = t>tForm+T.form*.6 && t<tBurst+150 ? 1 : 0;
   ctx.globalCompositeOperation='source-over';
-  const sp=Math.sin(view.lat), cp=Math.cos(view.lat);
-  if(t>=tBurst) view.lon+= .0025;
+  if(t>=tBurst) setDiveView(t);
+  if(t>=tBind&&t<tSea+T.sea*.6){ // the sea itself: the globe's disc, growing until it fills the screen
+    const k=R*view.zoom, fade=t<tSea?clamp((t-tBind)/600,0,1):1-clamp((t-tSea)/(T.sea*.6),0,1);
+    const g=ctx.createRadialGradient(W/2-k*.25,H/2-k*.3,k*.05,W/2,H/2,k);
+    g.addColorStop(0,'rgba(120,190,255,.35)'); g.addColorStop(1,'rgba(40,110,210,.45)');
+    ctx.globalAlpha=fade; ctx.fillStyle=g; ctx.beginPath(); ctx.arc(W/2,H/2,k,0,TAU); ctx.fill();
+    const rim=ctx.createRadialGradient(W/2,H/2,k*.92,W/2,H/2,k*1.12);
+    rim.addColorStop(0,'rgba(255,255,255,0)'); rim.addColorStop(.42,'rgba(255,255,255,.5)'); rim.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=rim; ctx.beginPath(); ctx.arc(W/2,H/2,k*1.12,0,TAU); ctx.fill(); ctx.globalAlpha=1; }
   for(let i=0;i<N;i++){
     let x,y,a=.85,s=1.4;
     const wob=Math.sin(t*.0012+seed[i]);
@@ -464,11 +477,18 @@ function drawIntro(t){
     else if(t<tBind){ // dissolve: blown outward with a little swirl
       const e=easeOut(clamp((t-tBurst)/T.burst,0,1)), ang=Math.atan2(ly[i]-H/2,lx[i]-W/2)+seed[i]*.15, d=e*(60+delay[i]*W*.28);
       x=lx[i]+Math.cos(ang)*d; y=ly[i]+Math.sin(ang)*d; sx[i]=x; sy[i]=y; a=.85-.45*e; }
-    else { // bind onto the globe
-      rest(i,P);
+    else if(t<tSea){ // bind onto the globe, then ride it down into the Atlantic
+      proj(world.sl[i],world.cl[i],world.lon[i],P);
       const e=ease(clamp((t-tBind-delay[i]*600)/(T.bind-600),0,1));
-      x=sx[i]+(P.x-sx[i])*e; y=sy[i]+(P.y-camY-sy[i])*e;
-      a=(.4+.6*e)*(P.z>0?1:1-e); s=1.4+e*.2; if(a<=0.01) continue; }
+      x=sx[i]+(P.x-sx[i])*e; y=sy[i]+(P.y-sy[i])*e;
+      a=(.4+.6*e)*(P.z>0?1:1-e); s=1.4+e*.4*Math.min(view.zoom,3);
+      if(P.z>0&&x>-10&&x<W+10&&y>-10&&y<H+10){ qx[i]=x; qy[i]=y; tx[i]=1; } else { qx[i]=W/2+(x-W/2)*.35; qy[i]=H/2+(y-H/2)*.35; tx[i]=0; }
+      if(a<=0.01) continue; }
+    else { // every dot swims from the globe to its place in the sea
+      rest(i,P);
+      const e=ease(clamp((t-tSea-delay[i]*350)/(T.sea-350),0,1));
+      x=qx[i]+(P.x-qx[i])*e; y=qy[i]+(P.y-camY-qy[i])*e;
+      a=tx[i]?1:Math.min(1,e*3); s=1.6+e*.5; if(a<=0.01) continue; }
     s*=1.45; ctx.globalAlpha=clamp(a*1.15,0,1); ctx.fillStyle=pcol[i]; ctx.fillRect(x-s/2,y-s/2,s,s);
   }
   ctx.globalCompositeOperation='source-over'; ctx.globalAlpha=1;
