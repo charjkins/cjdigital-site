@@ -874,8 +874,8 @@ function goBedford(){ return;
   if(mode==='intro') return; nameCta.classList.remove('on'); if(fx){ fx=null; wm.style.opacity=0; } clearTimeout(flyTimer); press('bedford'); mode='bedford';
   const tl=BEDFORD.lon*rad; let a=view.lon; while(a-tl>Math.PI)a-=TAU; while(tl-a>Math.PI)a+=TAU;
   fly={start:performance.now(),dur:reduce?1:2600,a:{lon:a,lat:view.lat,zoom:view.zoom},b:{lon:tl,lat:BEDFORD.lat*rad-.0012,zoom:clamp(3.1*H/R,6,18)},
-    done:()=>setReadout('03','52.136° N  0.467° W  ·  Bedford')};
-  setReadout('03','Flying to Bedford');
+    done:()=>setReadout('03','52.136° N  0.467° W  ·  England')};
+  setReadout('03','Flying to England');
 }
 function goWorld(){ return;
   if(mode==='intro') return; closeCard(); nameCta.classList.remove('on'); if(fx) release(); press('world'); mode='globe';
